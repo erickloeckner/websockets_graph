@@ -60,3 +60,4 @@ loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
 loop.add_signal_handler(signal.SIGINT, stop.set_result, None)
 
 loop.run_until_complete(sock_server(stop))
+loop.close()
