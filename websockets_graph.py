@@ -27,16 +27,10 @@ for i in range(NUM_POINTS):
 vals_out = ""
 
 async def ws_send(websocket, path):
-    conns.add(websocket)
-    print(conns)
+    #~ conns.add(websocket)
+    #~ print(conns)
     try:
-        while True:        
-            #~ load_avg = os.getloadavg()[0] / 4
-            #~ if load_avg > 1:
-                #~ load_avg = 1
-            #~ vals_combined = []
-            #~ y_vals.append(TOTAL_H - (load_avg * TOTAL_H) + MARGIN)
-            
+        while True:
             vals_combined = []
             for i in zip(x_vals, y_vals):
                 vals_combined.append(str(i[0]) + "," + str(i[1]))
@@ -49,10 +43,11 @@ async def ws_send(websocket, path):
         #~ pass
         await websocket.close()
     finally:
-        conns.remove(websocket)
+        #~ conns.remove(websocket)
+        pass
 
-async def get_data():
-    while True:
+async def get_data(stop):
+    while not stop.done():
         load_avg = os.getloadavg()[0] / 4
         if load_avg > 1:
             load_avg = 1
@@ -60,41 +55,30 @@ async def get_data():
         y_vals.append(TOTAL_H - (load_avg * TOTAL_H) + MARGIN)
         await asyncio.sleep(2)
 
-async def main_coro(websocket, path):
-    conns.add(websocket)
-    print(conns)
-    while True:
-        asyncio.gather(ws_send(websocket, path), get_data())
-
-async def sock_server():
+async def sock_server(stop):
     print("Starting server...")
-    server = websockets.serve(ws_send, '127.0.0.1', 5678)
-    #~ async with websockets.serve(ws_send, '127.0.0.1', 5678):
-    #~ async with websockets.serve(ws_send, '127.0.0.1', 5678):
-        #~ pass
+    async with websockets.serve(ws_send, '127.0.0.1', 5678):
+        pass
+        await stop
     print("\nShutting down server")
 
-def sig_handle(loop, tasks):
-    tasks.cancel()
-    #~ for task in asyncio.Task.all_tasks():
-        #~ task.cancel()
-    print("\nstopping event loop")
-    loop.stop()
+#~ def sig_handle(loop, tasks):
+    #~ tasks.cancel()
+    #~ print("\nstopping event loop")
+    #~ loop.stop()
 
-loop = asyncio.get_event_loop()
-server = websockets.serve(ws_send, '127.0.0.1', 5678)
-tasks = asyncio.gather(server, get_data())
+async def main_coro(stop):
+    await asyncio.gather(sock_server(stop), get_data(stop))
 
-loop.add_signal_handler(signal.SIGTERM, sig_handle, loop, tasks)
-loop.add_signal_handler(signal.SIGINT, sig_handle, loop, tasks)
+def main():
+    loop = asyncio.get_event_loop()
+    stop = loop.create_future()
 
-#~ loop.run_until_complete(sock_server(stop))
-
-#~ asyncio.gather(sock_server(), get_data())
-#~ loop.run_until_complete(server)
-
-try:
-    loop.run_forever()
-finally:
+    loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
+    loop.add_signal_handler(signal.SIGINT, stop.set_result, None)
+    
+    loop.run_until_complete(main_coro(stop))
     loop.close()
-    print("loop closed")
+
+if __name__ == "__main__":
+    main()
