@@ -56,6 +56,30 @@
             id="green_gradient"
             xlink:href="#green_gradient_stops" />
             
+        <linearGradient
+        id="grid_gradient_stops">
+            <stop
+            id="grid_g_stop1"
+            offset="0"
+            style="stop-color:#202020;stop-opacity:1" />
+            <stop
+            id="grid_g_stop2"
+            offset="0.5"
+            style="stop-color:#404040;stop-opacity:1" />
+            <stop
+            id="grid_g_stop3"
+            offset="1"
+            style="stop-color:#202020;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient
+            gradientUnits="userSpaceOnUse"
+            x1="0"
+            y1="720"
+            x2="1280"
+            y2="720"
+            id="grid_gradient"
+            xlink:href="#grid_gradient_stops" />
+            
         <filter id="blur_filter" width="300%" height="300%" y="-100%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
         </filter>
@@ -69,203 +93,37 @@
         id="bg_rect"
         style="fill:url(#bg_gradient);fill-opacity:1;stroke:none" />
         
-<!--
-    <g id="rectangles">
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect0"
-           width="39"
-           height="39"
-           x="10"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="49"
-           height="39"
-           width="39"
-           id="rect4566"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4568"
-           width="39"
-           height="39"
-           x="88"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="127"
-           height="39"
-           width="39"
-           id="rect4570"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4572"
-           width="39"
-           height="39"
-           x="166"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="205"
-           height="39"
-           width="39"
-           id="rect4574"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4576"
-           width="39"
-           height="39"
-           x="244"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="283"
-           height="39"
-           width="39"
-           id="rect4578"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4580"
-           width="39"
-           height="39"
-           x="322"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="361"
-           height="39"
-           width="39"
-           id="rect4582"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4584"
-           width="39"
-           height="39"
-           x="400"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="439"
-           height="39"
-           width="39"
-           id="rect4586"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4588"
-           width="39"
-           height="39"
-           x="478"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="517"
-           height="39"
-           width="39"
-           id="rect4590"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4592"
-           width="39"
-           height="39"
-           x="556"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="595"
-           height="39"
-           width="39"
-           id="rect4594"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4596"
-           width="39"
-           height="39"
-           x="634"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="673"
-           height="39"
-           width="39"
-           id="rect4598"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <rect
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           id="rect4600"
-           width="39"
-           height="39"
-           x="712"
-           y="351"
-           ry="5" />
-        <rect
-           ry="5"
-           y="351"
-           x="751"
-           height="39"
-           width="39"
-           id="rect4602"
-           style="fill:#191919;fill-opacity:1;stroke:none;stroke-width:3.83629036;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    </g>
--->
-        <polyline id="poly" points="" fill="none" stroke="url(#green_gradient)" stroke-width="4" />
+            <g id="grid_x">
+                <polyline points="  10,10   10,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 136,10  136,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 262,10  262,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 388,10  388,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 514,10  514,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 640,10  640,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 766,10  766,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points=" 892,10  892,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="1018,10 1018,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="1144,10 1144,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="1270,10 1270,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+            </g>
+            <g id="grid_y">
+                <polyline points="10,10  1270,10 " fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="10,185 1270,185" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="10,360 1270,360" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="10,535 1270,535" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+                <polyline points="10,710 1270,710" fill="none" stroke="url(#grid_gradient)" stroke-width="2" />
+            </g>
+        
         <use href="#poly" filter="url(#blur_filter)" />
+        <polyline id="poly" points="" fill="none" stroke="url(#green_gradient)" stroke-width="4" />
+        
         </svg>
         <script>
             var ws = new WebSocket("ws://127.0.0.1:5678/");
-                //~ messages = document.createElement('ul');
             ws.onmessage = function (event) {
-                //~ var messages = document.getElementsByTagName('ul')[0],
-                    //~ message = document.createElement('li'),
-                    //~ content = document.createTextNode(event.data);
-                
-                //~ var rectangles = document.getElementById('rectangles'),
-                    //~ message_data = JSON.parse(event.data);
-                    
-                //~ for (var i = 0; i < rectangles.children.length; i++) {
-                    //~ rectangles.children[i].setAttribute("height", message_data[i] + 39);
-                    //~ rectangles.children[i].setAttribute("y", 351 - message_data[i]);
-                    
                 var poly = document.getElementById('poly');
                 poly.setAttribute("points", JSON.parse(event.data));
-                //~ }
-                
-                //~ var cur_h = 150;
-                //~ rectangles.children[0].setAttribute("height", cur_h + 39);
-                //~ rectangles.children[0].setAttribute("y", 351 - cur_h);
-                
-                //~ console.log(message_data);
-                
-                //~ message.appendChild(content);
-                //~ messages.appendChild(message);
-                //rectangles
             };
-            //~ document.body.appendChild(messages);
         </script>
     </body>
 </html>
