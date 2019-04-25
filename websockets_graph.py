@@ -13,6 +13,7 @@ NUM_POINTS = 100
 TOTAL_W = 1260
 TOTAL_H = 700
 MARGIN = 10
+TIME_DELAY = 5
 
 conns = set()
 
@@ -23,7 +24,6 @@ y_vals = deque(maxlen = NUM_POINTS)
 for i in range(NUM_POINTS):
     y_vals.append(TOTAL_H)
     
-#~ vals_combined = []
 vals_out = ""
 
 async def ws_send(websocket, path):
@@ -38,9 +38,8 @@ async def ws_send(websocket, path):
             
             #~ await websocket.send(json.dumps(list(y_vals)))
             await websocket.send(json.dumps(vals_out))
-            await asyncio.sleep(2)
+            await asyncio.sleep(TIME_DELAY)
     except websockets.exceptions.ConnectionClosed:
-        #~ pass
         await websocket.close()
     finally:
         #~ conns.remove(websocket)
@@ -51,21 +50,14 @@ async def get_data(stop):
         load_avg = os.getloadavg()[0] / 4
         if load_avg > 1:
             load_avg = 1
-        #~ vals_combined = []
         y_vals.append(TOTAL_H - (load_avg * TOTAL_H) + MARGIN)
-        await asyncio.sleep(2)
+        await asyncio.sleep(TIME_DELAY)
 
 async def sock_server(stop):
-    print("Starting server...")
+    print("Starting server")
     async with websockets.serve(ws_send, '127.0.0.1', 5678):
-        pass
         await stop
     print("\nShutting down server")
-
-#~ def sig_handle(loop, tasks):
-    #~ tasks.cancel()
-    #~ print("\nstopping event loop")
-    #~ loop.stop()
 
 async def main_coro(stop):
     await asyncio.gather(sock_server(stop), get_data(stop))
